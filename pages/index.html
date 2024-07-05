@@ -34,61 +34,53 @@
             <li><a href="#contact" class="hover:text-gray-400">Contact Us</a></li>
             <!-- Add a login/register dropdown here -->
             <li class="relative">
-              <button id="login-register-toggle" class="hover:text-gray-400 bg-gray-900 focus:outline-none">
-                Login 
-              </button>
-              <div id="login-register-dropdown" class="login-register-forms absolute right-0 mt-2 bg-white w-[40rem] p-4 shadow-lg rounded-lg hidden">
-                <div id="login-form" class="mb-4">
-                  <h2 class="text-xl font-bold mb-2">Login</h2>
-                  <form>
-                    <div class="mb-2">
-                      <label for="login-username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
-                      <input type="text" class="w-full py-2 px-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent" id="login-username">
+                <button id="login-register-toggle" class="hover:text-gray-400 bg-gray-900 focus:outline-none">
+                    Login / Register
+                </button>
+                <div id="login-register-dropdown" class="login-register-forms absolute right-0 mt-2 bg-white w-[40rem] p-4 shadow-lg rounded-lg hidden">
+                    <div id="login-form" class="mb-4">
+                        <h2 class="text-xl font-bold mb-2">Login</h2>
+                        <form id="login-form" action="login.php" method="POST">
+                            <div class="mb-2">
+                                <label for="login-username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                                <input type="text" name="login-username" class="w-full py-2 px-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent" id="login-username" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="login-password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                                <input type="password" name="login-password" class="w-full py-2 px-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent" id="login-password" required>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent">
+                                    Login
+                                </button>
+                                <p class="text-sm">Don't have an account? <span id="switch-to-register" class="text-blue-500 cursor-pointer">Register here</span></p>
+                            </div>
+                        </form>
                     </div>
-                    <div class="mb-2">
-                      <label for="login-password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-                      <input type="password" class="w-full py-2 px-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent" id="login-password">
+                    <div id="register-form" class="hidden mb-4">
+                        <h2 class="text-xl font-bold mb-2 text-black">Register</h2>
+                        <form id="register-form" action="register.php" method="POST">
+                            <div class="mb-2">
+                                <label for="register-username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                                <input type="text" name="register-username" class="w-full py-2 px-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent" id="register-username" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="register-email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                                <input type="email" name="register-email" class="w-full py-2 px-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent" id="register-email" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="register-password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                                <input type="password" name="register-password" class="w-full py-2 px-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent" id="register-password" required>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent">
+                                    Register
+                                </button>
+                                <p class="text-sm"> <span id="switch-to-login" class="text-blue-500 cursor-pointer w-full">Login here</span></p>
+                            </div>
+                        </form>
                     </div>
-                    <div class="flex items-center justify-between">
-                      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent">
-                        Login
-                      </button>
-                      <p class="text-sm">Don't have an account? <span id="switch-to-register" class="text-blue-500 cursor-pointer">Register here</span></p>
-                    </div>
-                  </form>
                 </div>
-                <div id="register-form" class="hidden mb-4">
-                  <h2 class="text-xl font-bold mb-2 text-black">Register</h2>
-                  <form>
-                    <div class="mb-2">
-                      <label for="register-username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
-                      <input type="text" class="w-full py-2 px-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent" id="register-username">
-                    </div>
-                    <div class="mb-2">
-                      <label for="register-email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                      <input type="email" class="w-full py-2 px-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent" id="register-email">
-                    </div>
-                    <div class="mb-2">
-                      <label for="register-password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-                      <input type="password" class="w-full py-2 px-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent" id="register-password">
-                    </div>
-                    <div class="mb-2">
-                      <label for="register-address" class="block text-gray-700 text-sm font-bold mb-2">Address</label>
-                      <input type="text" class="w-full py-2 px-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent" id="register-address">
-                    </div>
-                    <div class="mb-2">
-                      <label for="register-phone" class="block text-gray-700 text-sm font-bold mb-2">Phone</label>
-                      <input type="tel" class="w-full py-2 px-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent" id="register-phone">
-                    </div>
-                    <div class="flex items-center justify-between">
-                      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent">
-                        Register
-                      </button>
-                      <p class="text-sm"> <span id="switch-to-login" class="text-blue-500 cursor-pointer w-full">Login here</span></p>
-                    </div>
-                  </form>
-                </div>
-              </div>
             </li>
           </ul>
         </div>

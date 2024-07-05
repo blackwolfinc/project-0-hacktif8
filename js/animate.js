@@ -1,51 +1,70 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
     const loginRegisterToggle = document.getElementById('login-register-toggle');
-    const loginRegisterDropdown = document.getElementById('login-register-dropdown');
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
     const switchToRegister = document.getElementById('switch-to-register');
     const switchToLogin = document.getElementById('switch-to-login');
 
-    // Toggle nav menu for small screens
-    navToggle.addEventListener('click', function() {
-      navMenu.classList.toggle('hidden');
-    });
-
-    // Toggle login/register dropdown
+    // Toggle between login and register forms
     loginRegisterToggle.addEventListener('click', function() {
-      loginRegisterDropdown.classList.toggle('hidden');
+        const dropdown = document.getElementById('login-register-dropdown');
+        dropdown.classList.toggle('hidden');
     });
 
-    // Switch to register form
     switchToRegister.addEventListener('click', function() {
-      loginForm.classList.add('hidden');
-      registerForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
     });
 
-    // Switch to login form
     switchToLogin.addEventListener('click', function() {
-      registerForm.classList.add('hidden');
-      loginForm.classList.remove('hidden');
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
     });
 
-    // Optional: Handle form submissions
+    // Handle form submissions with AJAX
     loginForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-      // Handle login form submission
-      console.log('Logging in...');
+        event.preventDefault();
+        const formData = new FormData(loginForm); // Use loginForm directly
+        fetch('login.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message); // Display success message
+                // Redirect or perform other actions after successful login
+            } else {
+                alert(data.message); // Display error message
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.'); // Display generic error message
+        });
     });
 
     registerForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-      // Handle register form submission
-      console.log('Registering...');
+        event.preventDefault();
+        const formData = new FormData(registerForm); // Use registerForm directly
+        fetch('register.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message); // Display success message
+                // Redirect or perform other actions after successful registration
+            } else {
+                alert(data.message); // Display error message
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.'); // Display generic error message
+        });
     });
-  });
-
-  document.getElementById('nav-toggle').addEventListener('click', function() {
-    document.getElementById('nav-menu').classList.toggle('hidden');
 });
 
 
@@ -146,3 +165,4 @@ function calculateCost() {
   // Display total cost
   document.getElementById('totalCost').innerText = totalCost;
 }
+
